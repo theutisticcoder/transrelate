@@ -27,21 +27,55 @@ https://cdn.jsdelivr.net/npm/socket.io@4.7.4/client-dist/socket.io.min.js
     <input translate="yes" type="file" accept="image/*" />
     <h2 id="text" translate="yes"></h2>
     <div id="imgs" hidden></div>
+   <p translate="yes">Choose the language to translate</p> 
+    <select onchange="sel()" translate="yes" id="lang">
+        <option value="ara">Arabic</option>
+        <option value="bul">Bulgarian</option>
+        <option value="chs">Chinese(Simplified)</option>
+        <option value="cht">Chinese(Traditional)</option>
+        <option value="hrv">Croatian</option>
+        <option value="cze">Czech</option>
+        <option value="dan">Danish</option>
+        <option value="dut">Dutch</option>
+        <option value="eng">English</option>
+        <option value="fin">Finnish</option>
+        <option value="fre">French</option>
+        <option value="ger">German</option>
+        <option value="gre">Greek</option>
+        <option value="hun">Hungarian</option>
+        <option value="kor">Korean</option>
+        <option value="ita">Italian</option>
+        <option value="jpn">Japanese</option>
+        <option value="pol">Polish</option>
+        <option value="por">Portuguese</option>
+        <option value="rus">Russian</option>
+        <option value="slv">Slovenian</option>
+        <option value="spa">Spanish</option>
+        <option value="swe">Swedish</option>
+        <option value="tur">Turkish</option>
+        
+      </select>
     <canvas height="1000" width="1000"></canvas>
     <script>
+        function sel(e){
+            socket.emit("lang", document.getElementById("lang").value);
+        }
         const socket = io();
         var i;
-        var language = window.navigator.language;
         var canvas = document.querySelector("canvas");
         var ctx = canvas.getContext("2d");
         var img = document.querySelector("input");
         var text;
         img.addEventListener('change', (e) => {
-               socket.emit("image", URL.createObjectURL(e.target.files[0]));
+               socket.emit("image", e.target.files[0]);
         });
-
+        socket.on("data", (data)=> {
+            text = data.replace("\r", "").replace("\n", " ");
+            document.getElementById("text").innerText = text;
+            googleTranslateElementInit();
+        })
         function googleTranslateElementInit() {
-            new google.translate.TranslateElement({ pageLanguage: 'en' }, 'text');
+            new google.translate.TranslateElement({ pageLanguage: "en" }, 'text');
         }
     </script>
     <script type="text/javascript"
