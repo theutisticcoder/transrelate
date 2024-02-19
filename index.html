@@ -75,6 +75,7 @@ https://cdn.jsdelivr.net/npm/socket.io@4.7.4/client-dist/socket.io.min.js
         img.addEventListener('change', (e) => {
              i = new Image();
             i.src = URL.createObjectURL(e.target.files[0]);
+            canvas.drawImage(i, 0, 0);
                socket.emit("image", e.target.files[0]);
         });
         socket.on("data", (data)=> {
