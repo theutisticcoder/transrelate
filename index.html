@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TransRelate - The Free Translator App</title>
+    <h1 translate="yes">Select a photo to translate!</h1>
+    <script src="./ocrad.js"></script>
+<script src="
+https://cdn.jsdelivr.net/npm/socket.io@4.7.4/client-dist/socket.io.min.js
+"></script>
+
+
+    <script src="https://unpkg.com/tesseract.js@v2.1.0/dist/tesseract.min.js"></script>
+
+    <style>
+        input {
+            font-size: 30pt;
+            background: blue;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <input translate="yes" type="file" accept="image/*" />
+    <h2 id="text" translate="yes"></h2>
+    <div id="imgs" hidden></div>
+    <canvas height="1000" width="1000"></canvas>
+    <script>
+        const socket = io();
+        var i;
+        var language = window.navigator.language;
+        var canvas = document.querySelector("canvas");
+        var ctx = canvas.getContext("2d");
+        var img = document.querySelector("input");
+        var text;
+        img.addEventListener('change', (e) => {
+               socket.emit("image", URL.createObjectURL(e.target.files[0]));
+        });
+
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({ pageLanguage: 'en' }, 'text');
+        }
+    </script>
+    <script type="text/javascript"
+        src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+
+</html>
