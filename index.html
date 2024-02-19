@@ -61,21 +61,22 @@ https://cdn.jsdelivr.net/npm/socket.io@4.7.4/client-dist/socket.io.min.js
         <option value="tur">Turkish</option>
         
       </select>
-    <canvas height="1000" width="1000"></canvas>
+    <canvas height="500" width="500"></canvas>
     <script>
         function sel(e){
             socket.emit("lang", document.getElementById("lang").value);
         }
         const socket = io();
-        var i;
+        var i = new Image();
+        i.src = "";
+        document.body.appendChild(i);
+        i.after(canvas)
         var canvas = document.querySelector("canvas");
         var ctx = canvas.getContext("2d");
         var img = document.querySelector("input");
         var text;
         img.addEventListener('change', (e) => {
-             i = new Image();
             i.src = URL.createObjectURL(e.target.files[0]);
-            canvas.getContext("2d").drawImage(i, 0, 0);
                socket.emit("image", e.target.files[0]);
         });
         socket.on("data", (data)=> {
