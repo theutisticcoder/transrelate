@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TransRelate - The Free Translator App</title>
-    <h1 >Select a photo to translate!</h1>
+    <title translate="no">TransRelate - The Free Translator App</title>
+    <h1 translate="no">Select a photo to translate!</h1>
     <script src="./ocrad.js"></script>
 <script src="
 https://cdn.jsdelivr.net/npm/socket.io@4.7.4/client-dist/socket.io.min.js
@@ -30,35 +30,35 @@ https://cdn.jsdelivr.net/npm/socket.io@4.7.4/client-dist/socket.io.min.js
 </head>
 
 <body>
-    <input type="file" accept="image/*" />
-    <h2 id="text"></h2>
+    <input translate="no" type="file" accept="image/*" />
+    <h2 translate="no" id="text"></h2>
     <div id="imgs" hidden></div>
-   <p>Choose the language to translate</p> 
-    <select onchange="sel()" id="lang">
-        <option value="ara">Arabic</option>
-        <option value="bul">Bulgarian</option>
-        <option value="chs">Chinese(Simplified)</option>
-        <option value="cht">Chinese(Traditional)</option>
-        <option value="hrv">Croatian</option>
-        <option value="cze">Czech</option>
-        <option value="dan">Danish</option>
-        <option value="dut">Dutch</option>
-        <option value="eng">English</option>
-        <option value="fin">Finnish</option>
-        <option value="fre">French</option>
-        <option value="ger">German</option>
-        <option value="gre">Greek</option>
-        <option value="hun">Hungarian</option>
-        <option value="kor">Korean</option>
-        <option value="ita">Italian</option>
-        <option value="jpn">Japanese</option>
-        <option value="pol">Polish</option>
-        <option value="por">Portuguese</option>
-        <option value="rus">Russian</option>
-        <option value="slv">Slovenian</option>
-        <option value="spa">Spanish</option>
-        <option value="swe">Swedish</option>
-        <option value="tur">Turkish</option>
+   <p translate="no">Choose the language to translate</p> 
+    <select translate="no" onchange="sel()" id="lang">
+        <option translate="no" value="ara">Arabic</option>
+        <option translate="no" value="bul">Bulgarian</option>
+        <option translate="no" value="chs">Chinese(Simplified)</option>
+        <option translate="no" value="cht">Chinese(Traditional)</option>
+        <option translate="no" value="hrv">Croatian</option>
+        <option translate="no" value="cze">Czech</option>
+        <option translate="no" value="dan">Danish</option>
+        <option translate="no" value="dut">Dutch</option>
+        <option translate="no" value="eng">English</option>
+        <option translate="no" value="fin">Finnish</option>
+        <option translate="no" value="fre">French</option>
+        <option translate="no" value="ger">German</option>
+        <option translate="no" value="gre">Greek</option>
+        <option translate="no" value="hun">Hungarian</option>
+        <option translate="no" value="kor">Korean</option>
+        <option translate="no" value="ita">Italian</option>
+        <option translate="no" value="jpn">Japanese</option>
+        <option translate="no" value="pol">Polish</option>
+        <option translate="no" value="por">Portuguese</option>
+        <option translate="no" value="rus">Russian</option>
+        <option translate="no" value="slv">Slovenian</option>
+        <option translate="no" value="spa">Spanish</option>
+        <option translate="no" value="swe">Swedish</option>
+        <option translate="no" value="tur">Turkish</option>
         
       </select>
     <div id="aft"></div>
