@@ -14,7 +14,7 @@ io.on("connect", (socket)=> {
     lang = l;
     console.log(l);
   })
-  socket.on("image", (link)=> {
+  socket.on("image",async (link)=> {
       const api = require('api_ocr_space');
       
       try {
