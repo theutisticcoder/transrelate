@@ -4,7 +4,7 @@ var lang = "eng";
 var options =  { 
     apikey: "K88662476688957"
   };
-  var ocr = require('ocr');
+  var tesseract = require('node-tesseract');
  
 // Set default values. 
 
@@ -23,21 +23,15 @@ io.on("connect", (socket)=> {
       
       try {
         fs.writeFile("main.png", Buffer.from(link), async()=> {
-          var params = {
-            input: 'main.png',
-            output: 'test.txt',
-            format: 'text'
-        };
-          ocr.recognize(params, function(err, document){
-            if(err)
+          tesseract.process('main.png',function(err, t) {
+            if(err) {
                 console.error(err);
-            else{        
-                //output the document object: 
-                console.log(document.getRegions()[0].text);
-                text = document.getRegions()[0].text; 
+            } else {
+                console.log(t);
+                text = t;
             }
         });
-          socket.emit("data", res.data.ParsedResults[0].ParsedText)
+          socket.emit("data", text)
         });
       } catch (error) {
           console.log(error);
